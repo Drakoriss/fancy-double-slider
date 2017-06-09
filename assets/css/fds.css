@@ -1,0 +1,78 @@
+section.fancy-double-slider {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    color: #34495e;
+}
+
+section.fancy-double-slider div {
+    display: none;
+}
+
+section.fancy-double-slider input {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 200px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    outline: none;
+    pointer-events: none;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+section.fancy-double-slider input:focus {
+    outline: none;
+}
+
+section.fancy-double-slider input::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 10px;
+    height: 18px;
+    background-color: #2c83da;
+}
+
+section.fancy-double-slider input::-webkit-slider-runnable-track {
+    background-color: #34495e;
+}
+
+section.fancy-double-slider input::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    border: 0;
+    border-radius: 0;
+    width: 10px;
+    height: 18px;
+    background-color: #2c83da;
+}
+
+section.fancy-double-slider input::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background: transparent;
+    border: 0;
+}
+
+/* colored div for Firefox, couz z-index won't work for slider thumb */
+@-moz-document url-prefix() {
+    section.fancy-double-slider div {
+        display: block;
+        width: 200px;
+        height: 18px;
+        position: absolute;
+        top: 18px;
+        left: 0;
+        background-color: #34495e;
+    }
+}

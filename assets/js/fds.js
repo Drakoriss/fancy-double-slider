@@ -1,9 +1,11 @@
+window.FDS = {};
+
 /**
  * Method for avoiding `window.onload` re-assigning.
  *
  * @param {function} func
  */
-function addLoadEvent(func) {
+FDS.addLoadEvent = function addLoadEvent(func) {
 
     let oldOnLoad = window.onload;
 
@@ -15,12 +17,12 @@ function addLoadEvent(func) {
             func();
         };
     }
-}
+};
 
 /**
  * Sliders `oninput` method.
  */
-function getFDSValues() {
+FDS.getFDSValues = function getFDSValues() {
 
     let parent = this.parentNode,
         slides = parent.getElementsByTagName("input"),
@@ -35,10 +37,10 @@ function getFDSValues() {
     let displayElement = parent.getElementsByClassName("fds-range-values")[0];
 
     displayElement.innerHTML = slide1 + " - " + slide2;
-}
+};
 
 // Initialization of all existing FDS
-addLoadEvent(() => {
+FDS.addLoadEvent(() => {
 
     let sliderSections = document.getElementsByClassName("fancy-double-slider");
 
@@ -49,7 +51,7 @@ addLoadEvent(() => {
         for (let slider = 0; slider < sliders.length; slider++) {
 
             if (sliders[slider].type === "range") {
-                sliders[slider].oninput = getFDSValues;
+                sliders[slider].oninput = FDS.getFDSValues;
 
                 // Manually trigger event first time to display values
                 sliders[slider].oninput();
